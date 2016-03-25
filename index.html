@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./libs/bootstrap/bootstrap.min.css">
+
+    <script src="./libs/jquery-1.11.3.min.js"></script>
+    <script src="./libs/bootstrap/bootstrap.min.js"></script>
+    <script src="./libs/dygraph-combined.js"></script>
+    <script src="./libs/handlebars.js"></script>
+    <script src="./libs/underscore.js"></script>
+    <script src="./libs/showdown.js"></script>
+    <script src="populationSim.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="container-fluid">
+        <h1 class="title">Population Sim</h1>
+        <button type="button" id="descriptionBtn" class="btn" data-toggle="modal" data-target=".bs-example-modal-lg">Description / Help</button>
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div id="description-content" class="modal-body">
+                        <a href="https://github.com/calvinjc/sequence_assistant">https://github.com/calvinjc/PopulationSim</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+                <div id="simOptionsDiv">
+                    <h3>Simulation Options:</h3>
+                    <div class="sim-inputs">
+                        <label class="input-label">Starting Population: <input class="num-input" id="startingPop" type="number"></label>
+                        <label class="input-label">Population starting age: <input class="num-input" id="startingAge" type="number"></label>
+
+                        <label class="input-label spacer">Birthrate (years): <input class="num-input" id="birthrate" type="number"></label>
+
+
+                        <label class="input-label">Birth Mode:</label>
+                        <label class="radio-label">
+                            <input class="radioBtn" type="radio" id="byNumKids" name="birthMode" value="byNumKids" checked>
+                            By Number of Kids
+                        </label>
+                        <div class="input-opt-group">
+                            <label class="input-label sub-label">Number of Children:<input class="num-input" id="fertilityRate" type="number"></label>
+                            <label class="input-label sub-label">Age of first childbirth:<input class="num-input" id="firstChildAge" type="number"></label>
+                        </div>
+                        <label class="input-label">
+                            <input type="radio" id="byMaxAge" name="birthMode" value="byMaxAge">
+                            By Min/Max Age:
+                        </label>
+                        <div class="input-opt-group">
+                            <label class="input-label sub-label">Min childbearing age: <input class="num-input" id="minAge" type="number"></label>
+                            <label class="input-label sub-label">Max childbearing age: <input class="num-input" id="maxAge" type="number"></label>
+                        </div>
+
+
+                        <label class="input-label">Avg lifespan: <input class="num-input" id="avgLifespan" type="number"></label>
+                        <label class="input-label">Childhood mortality rate (%): <input class="num-input" id="childhoodMortality" type="number"></label>
+                        <label class="input-label sub-label spacer">*this will slow down large simulations</label>
+						
+                        <label class="input-label">Simulation length (years): <input class="num-input" id="simLength" type="number"></label>
+                        <label class="input-label">Simulation Delay (milliseconds): <input class="num-input" id="simSpeed" type="number"></label>
+
+                        <div class="sim-btns">
+                            <button id="startSimBtn">Start</button>
+                            <button id="stopSimBtn">Stop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8 col-md-8">
+                <div id="resultSummaryDiv"></div>
+                <div id="populationGraph" style="width:100%; height:300px; margin-right:50px;"></div>
+                <div id="birthGraph" style="width:100%; height:300px; margin-right:50px;"></div>
+                <div id="deathGraph" style="width:100%; height:300px; margin-right:50px;"></div>
+                <!--<input id="simYearSlider" type="range" min="0" max="100" step="10" />-->
+                <div id="simResultDiv"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <nav class="navbar navbar-default navbar-bottom">
+        <div class="container">
+            <p class="navbar-text">
+                <a href="https://github.com/calvinjc/PopulationSim">View it on GitHub</a>
+            </p>
+        </div>
+    </nav>
+</body>
+</html>
